@@ -2,64 +2,70 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="w-full min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+      {/* Hero Section */}
+      <section className="flex flex-col lg:flex-row items-center justify-center gap-12 px-6 lg:px-20 py-20 min-h-screen">
+        {/* Left Content */}
+        <div className="flex-1 flex flex-col justify-center text-white max-w-2xl">
+          <h1 className="text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            Jaypee Cabanela
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          
+          <p className="text-xl text-gray-300 mb-2">Front-End Web Developer | UI/UX Designer</p>
+          
+          <p className="text-lg text-gray-400 leading-relaxed mb-8">
+            I'm a passionate web developer with expertise in creating dynamic and user-friendly websites. I specialize in front-end development, utilizing technologies like React, Next.js, and Tailwind CSS to build responsive and visually appealing web applications. With a keen eye for design and a commitment to clean code, I strive to deliver exceptional user experiences.
           </p>
+
+          {/* Skills Section */}
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold mb-4 text-white">Skills & Technologies</h3>
+            <div className="flex flex-wrap gap-3">
+              {['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'JavaScript', 'Web Design'].map((skill) => (
+                <span 
+                  key={skill}
+                  className="px-4 py-2 bg-blue-600 bg-opacity-30 text-blue-200 rounded-full text-sm border border-blue-500 cursor-pointer hover:bg-blue-600 hover:bg-opacity-50 hover:text-cyan-300 hover:border-cyan-400 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/50 transition duration-300 transform"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex gap-4">
+            <button className="px-8 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 hover:scale-105 active:scale-95 transition duration-300 transform">
+              Get In Touch
+            </button>
+            <button className="px-8 py-3 border-2 border-blue-500 text-blue-400 font-semibold rounded-lg hover:bg-blue-500 hover:bg-opacity-20 hover:scale-105 active:scale-95 hover:border-cyan-400 transition duration-300 transform">
+              View Projects
+            </button>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+
+        {/* Right Image */}
+        <div className="flex-1 flex justify-center items-center">
+          <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden shadow-2xl border-2 border-blue-500 border-opacity-30">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/profile.png"
+              alt="Jaypee Cabanela Profile"
+              fill
+              className="object-cover"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-20"></div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Footer CTA */}
+      <div className="border-t border-gray-700 bg-black bg-opacity-50 py-12 px-6 text-center">
+        <p className="text-gray-300 text-lg mb-4">Let's connect and bring your web projects to life!</p>
+        <div className="flex justify-center gap-4">
+          <a href="#" className="text-blue-400 hover:text-blue-300 transition">LinkedIn</a>
+          <a href="#" className="text-blue-400 hover:text-blue-300 transition">GitHub</a>
+          <a href="#" className="text-blue-400 hover:text-blue-300 transition">Email</a>
+        </div>
+      </div>
+    </main>
   );
 }
