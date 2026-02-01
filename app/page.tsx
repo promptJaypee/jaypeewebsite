@@ -191,7 +191,7 @@ export default function Home() {
                       href="mailto:jaypee@example.com"
                       className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-cyan-400 transition"
                     >
-                      jaypee@example.com
+                      jaypeedeaustriacabanela@gmail.com
                     </a>
                   </div>
                 </div>
@@ -206,7 +206,7 @@ export default function Home() {
                       href="tel:+1234567890"
                       className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-cyan-400 transition"
                     >
-                      +1 (234) 567-8900
+                      +63 9772044079
                     </a>
                   </div>
                 </div>
