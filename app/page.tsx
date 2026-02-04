@@ -72,7 +72,7 @@ export default function Home() {
           <div className="flex justify-between items-center py-4 gap-6">
             <nav className="hidden md:flex space-x-8">
               <a
-                href="#home"
+                href="#contacts"
                 className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
               >
                 <svg
@@ -91,7 +91,7 @@ export default function Home() {
                 </svg>
               </a>
               <a
-                href="#about"
+                href="#mail"
                 className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
               >
                 <svg
@@ -110,7 +110,7 @@ export default function Home() {
                 </svg>
               </a>
               <a
-                href="#projects"
+                href="#home"
                 className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
               >
                 <svg
@@ -129,7 +129,7 @@ export default function Home() {
                 </svg>
               </a>
               <a
-                href="#contact"
+                href="#projects"
                 className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
               >
                 <svg
@@ -241,8 +241,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Skills Section */}
-            <div className="mb-8">
+           
+            {/* <div className="mb-8">
               <h3 className="text-2xl font-semibold mb-4 text-black dark:text-white">
                 Skills & Technologies
               </h3>
@@ -263,7 +263,7 @@ export default function Home() {
                   </span>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* CTA Buttons */}
             <div className="flex gap-4">
