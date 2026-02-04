@@ -171,7 +171,7 @@ export default function Home() {
             </h1>
 
             <p className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-2">
-              Front-end Web Developer | Front-End Specialist
+              Front-end Web Developer | UI/UX Designer
             </p>
 
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
