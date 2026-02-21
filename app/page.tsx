@@ -5,11 +5,15 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [typedText, setTypedText] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
 
+
+  //dark theme start
   useEffect(() => {
+    setMounted(true);
     const savedTheme = localStorage.getItem("theme");
     const initialDark = savedTheme ? savedTheme === "dark" : true;
     setIsDark(initialDark);
@@ -18,17 +22,20 @@ export default function Home() {
     } else {
       document.documentElement.classList.remove("dark");
     }
-    localStorage.setItem("theme", initialDark ? "dark" : "light");
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
     if (isDark) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
     localStorage.setItem("theme", isDark ? "dark" : "light");
-  }, [isDark]);
+  }, [isDark, mounted]);
+
+//dark theme end
+
 
   useEffect(() => {
     const fullText = "Jaypee Cabanela";
@@ -63,8 +70,44 @@ export default function Home() {
     }
   }, []);
 
+  // useEffect(() => {
+  //   const handleAnchorClick = (e: Event) => {
+  //     const target = e.target as HTMLAnchorElement;
+  //     const href = target.getAttribute("href");
+      
+  //     if (href && href.startsWith("#")) {
+  //       e.preventDefault();
+  //       const id = href.substring(1);
+  //       const element = document.getElementById(id);
+  //       if (element) {
+  //         element.scrollIntoView({ behavior: "smooth", block: "start" });
+  //       }
+  //     }
+  //   };
+
+  //   if (typeof window !== "undefined") {
+  //     document.addEventListener("click", handleAnchorClick);
+  //     return () => document.removeEventListener("click", handleAnchorClick);
+  //   }
+  // }, []);
+
   return (
+
+    
     <div>
+
+      {/* Theme Toggle Button */}
+      {mounted && (
+        <button
+          onClick={() => setIsDark(!isDark)}
+          className="fixed bottom-4 right-4 p-3 bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-white rounded-full shadow-lg hover:shadow-xl transition duration-300 z-50"
+          aria-label="Toggle theme"
+        >
+          {isDark ? "☀️" : "🌙"}
+        </button>
+      )}
+
+      
       <header
         className={`fixed top-0 w-full ${isScrolled ? "bg-white dark:bg-gray-950 shadow-md" : "bg-transparent"} transition-colors duration-300 z-50`}
       >
@@ -162,7 +205,7 @@ export default function Home() {
 
       <main className="w-full min-h-screen bg-gray-50 dark:bg-linear-to-br dark:from-gray-900 dark:via-black dark:to-gray-900 pt-12">
         {/* Hero Section */}
-        <section className="flex flex-col lg:flex-row items-center justify-center gap-12 px-6 lg:px-20 py-20 min-h-screen">
+        <section id="home" className="flex flex-col lg:flex-row items-center justify-center gap-12 px-6 lg:px-20 py-20 min-h-screen">
           {/* Left Content */}
           <div className="flex-1 flex flex-col justify-center text-black dark:text-white max-w-2xl">
             <h1 className="text-5xl lg:text-6xl font-bold mb-4 bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
@@ -267,12 +310,16 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex gap-4">
-              <button className="px-8 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 hover:scale-105 active:scale-95 transition duration-300 transform">
+              <a href="#contacts"
+              className="px-8 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 hover:scale-105 active:scale-95 transition duration-300 transform">
                 Get In Touch
-              </button>
-              <button className="px-8 py-3 border-2 border-blue-500 text-gray-700 dark:text-gray-400 font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 hover:bg-blue-100 dark:hover:bg-blue-500 dark:hover:bg-opacity-20 hover:scale-105 active:scale-95 hover:border-blue-400 dark:hover:border-cyan-400 transition duration-300 transform">
+              </a>
+              <a
+                href="#projects"
+                className="px-8 py-3 border-2 border-blue-500 text-gray-700 dark:text-gray-400 font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 hover:bg-blue-100 dark:hover:bg-blue-500 dark:hover:bg-opacity-20 hover:scale-105 active:scale-95 hover:border-blue-400 dark:hover:border-cyan-400 transition duration-300 transform inline-block"
+              >
                 View Projects
-              </button>
+              </a>
             </div>
           </div>
 
@@ -291,7 +338,7 @@ export default function Home() {
         </section>
 
         {/* Projects Section */}
-        <section className="w-full py-20 px-6 lg:px-20 bg-gray-50 dark:bg-linear-to-br dark:from-gray-900 dark:via-black dark:to-gray-900">
+        <section id="projects" className="w-full py-20 px-6 lg:px-20 bg-gray-50 dark:bg-linear-to-br dark:from-gray-900 dark:via-black dark:to-gray-900">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-5xl lg:text-6xl font-bold mb-12 text-center bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               Featured Projects
@@ -359,7 +406,7 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section className="w-full py-20 px-6 lg:px-20 bg-gray-50 dark:bg-linear-to-br dark:from-black dark:via-gray-900 dark:to-black">
+        <section id="contacts" className="w-full py-20 px-6 lg:px-20 bg-gray-50 dark:bg-linear-to-br dark:from-black dark:via-gray-900 dark:to-black">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-5xl lg:text-6xl font-bold mb-8 text-center bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               Get In Touch
@@ -499,15 +546,6 @@ export default function Home() {
             </a>
           </div>
         </div>
-
-        {/* Theme Toggle Button */}
-        <button
-          onClick={() => setIsDark(!isDark)}
-          className="fixed bottom-4 right-4 p-3 bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-white rounded-full shadow-lg hover:shadow-xl transition duration-300 z-50"
-          aria-label="Toggle theme"
-        >
-          {isDark ? "☀️" : "🌙"}
-        </button>
       </main>
     </div>
   );
