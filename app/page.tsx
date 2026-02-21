@@ -523,7 +523,7 @@ export default function Home() {
         {/* Footer CTA */}
         <div className="border-t border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-black dark:bg-opacity-50 py-12 px-6 text-center">
           <p className="text-gray-700 dark:text-gray-300 text-lg mb-4">
-            Lets connect and bring your web projects to life! I miss you, Rosie!
+            Lets connect and bring your web projects to life! I miss you, Rosie! harthart
           </p>
           <div className="flex justify-center gap-6">
             <a
