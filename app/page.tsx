@@ -36,7 +36,7 @@ export default function Home() {
   //dark theme end
 
   useEffect(() => {
-    const fullText = "Jaypee Cabanela";
+    const fullText = "Jaypee Cabanela.";
     let index = 0;
     const typeInterval = setInterval(() => {
       if (index < fullText.length) {
@@ -45,7 +45,7 @@ export default function Home() {
       } else {
         clearInterval(typeInterval);
       }
-    }, 150); // Typing speed
+    }, 100); // Typing speed
 
     const cursorInterval = setInterval(() => {
       setCursorVisible((prev) => !prev);
