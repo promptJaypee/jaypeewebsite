@@ -37,7 +37,7 @@ html.light {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Open sans', 'Ubuntu', monospace;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
 }
 
 @keyframes fadeInUp {
@@ -52,5 +52,5 @@ body {
 }
 
 section {
-  animation: fadeInUp 0.8s ease-out;
+  animation: fadeInUp 0.9s ease-out;
 }
