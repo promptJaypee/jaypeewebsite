@@ -5,13 +5,14 @@ import { useState, useEffect, type ChangeEvent, type FormEvent, type MouseEvent 
 import projects from "@/app/data/jsons/projects.json";
 
 export default function Home() {
+  const heroText = "Jaypee Cabanela.";
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [typedText, setTypedText] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -79,11 +80,10 @@ export default function Home() {
   //dark theme end
 
   useEffect(() => {
-    const fullText = "Jaypee Cabanela.";
     let index = 0;
     const typeInterval = setInterval(() => {
-      if (index < fullText.length) {
-        setTypedText(fullText.slice(0, index + 1));
+      if (index < heroText.length) {
+        setTypedText(heroText.slice(0, index + 1));
         index++;
       } else {
         clearInterval(typeInterval);
@@ -347,10 +347,17 @@ export default function Home() {
         >
           {/* Center Content */}
           <div className="flex flex-col justify-center text-center text-black dark:text-white max-w-2xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent break-words">
-              {typedText}
-              {cursorVisible ? <span className="text-white">|</span> : ""}
-            </h1>
+            <div className="mb-4 flex min-h-[3rem] sm:min-h-[3.75rem] lg:min-h-[4.5rem] items-center justify-center">
+              <div className="relative inline-flex items-center justify-center">
+                <span className="invisible whitespace-nowrap text-[2rem] sm:text-4xl lg:text-6xl font-bold">
+                  {heroText}
+                </span>
+                <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap text-[2rem] sm:text-4xl lg:text-6xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  {typedText}
+                  {cursorVisible ? <span className="ml-0.5 inline-block text-white">|</span> : ""}
+                </span>
+              </div>
+            </div>
 
             <p className="text-lg sm:text-xl font-bold text-gray-700 dark:text-gray-300 mb-2">
               Front-end Web Developer | UI/UX Designer
@@ -392,7 +399,7 @@ export default function Home() {
         >
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-12 text-center bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Featured Projects
+              Projects
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -441,7 +448,7 @@ export default function Home() {
         >
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-center bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Get In Touch
+              Sent a Message
             </h2>
             <p className="text-gray-700 dark:text-gray-300 text-center text-base sm:text-lg mb-12">
               Have a project in mind or want to collaborate? I&apos;d love to
