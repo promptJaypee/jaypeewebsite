@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import projects from "@/app/data/jsons/projects.json";
 
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
@@ -9,6 +10,7 @@ export default function Home() {
   const [typedText, setTypedText] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   //dark theme start
   useEffect(() => {
@@ -68,26 +70,37 @@ export default function Home() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const handleAnchorClick = (e: Event) => {
-  //     const target = e.target as HTMLAnchorElement;
-  //     const href = target.getAttribute("href");
+  // Lock body scroll while the mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
-  //     if (href && href.startsWith("#")) {
-  //       e.preventDefault();
-  //       const id = href.substring(1);
-  //       const element = document.getElementById(id);
-  //       if (element) {
-  //         element.scrollIntoView({ behavior: "smooth", block: "start" });
-  //       }
-  //     }
-  //   };
+  // Close the mobile menu automatically if the viewport grows past the md breakpoint
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  //   if (typeof window !== "undefined") {
-  //     document.addEventListener("click", handleAnchorClick);
-  //     return () => document.removeEventListener("click", handleAnchorClick);
-  //   }
-  // }, []);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const navLinks = [
+    { href: "#home", label: "Home" },
+    { href: "#contacts", label: "Contacts" },
+    { href: "https://www.linkedin.com/in/jaypeecabanela/", label: "Mail" },
+    { href: "#projects", label: "Projects" },
+  ];
 
   return (
     <div>
@@ -103,7 +116,7 @@ export default function Home() {
       )}
 
       <header
-        className={`fixed top-0 w-full ${isScrolled ? "bg-white dark:bg-gray-950 shadow-md" : "bg-transparent"} transition-colors duration-300 z-50`}
+        className={`fixed top-0 w-full ${isScrolled || isMenuOpen ? "bg-white dark:bg-gray-950 shadow-md" : "bg-transparent"} transition-colors duration-300 z-50`}
       >
         <div className="flex justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4 gap-6 w-full">
@@ -112,43 +125,28 @@ export default function Home() {
               {/* Jaypeedraws Icon */}
               <div className="flex items-center">
                 <Image
-                  src="/jaypeedraws icon.png"
+                  src="/jaypeedraws-icon.png"
                   alt="Jaypee Cabanela Logo"
                   width={25}
                   height={25}
                 />
               </div>
 
-              {/* Navigation Menu */}
+              {/* Navigation Menu - Desktop */}
               <nav className="hidden md:flex space-x-8">
-                <a
-                  href="#home"
-                  className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  Home
-                </a>
-                <a
-                  href="#contacts"
-                  className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  Contacts
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/jaypeecabanela/"
-                  className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  Mail
-                </a>
-                <a
-                  href="#projects"
-                  className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  Projects
-                </a>
+                {navLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
+                  >
+                    {link.label}
+                  </a>
+                ))}
               </nav>
             </div>
 
-            {/* Social Icons - Right */}
+            {/* Social Icons - Right (Desktop) */}
             <div className="hidden md:flex items-center gap-4">
               <a
                 href="https://www.linkedin.com/in/jaypeecabanela/"
@@ -180,7 +178,7 @@ export default function Home() {
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
               </a>
-            
+
               <a
                 href="https://www.facebook.com/jaypee.cabanela"
                 target="_blank"
@@ -190,7 +188,90 @@ export default function Home() {
                 Contact me
               </a>
             </div>
+
+            {/* Hamburger Button - Mobile only */}
+            <button
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              className="md:hidden relative z-50 w-8 h-8 flex flex-col justify-center items-center gap-1.5"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+            >
+              <span
+                className={`block h-0.5 w-6 bg-gray-800 dark:bg-white transition duration-300 ${
+                  isMenuOpen ? "rotate-45 translate-y-2" : ""
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-6 bg-gray-800 dark:bg-white transition duration-300 ${
+                  isMenuOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-6 bg-gray-800 dark:bg-white transition duration-300 ${
+                  isMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                }`}
+              />
+            </button>
           </div>
+        </div>
+
+        {/* Mobile Menu Panel */}
+        <div
+          id="mobile-menu"
+          className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 ${
+            isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="flex flex-col px-6 py-4 gap-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={closeMenu}
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition text-lg font-medium"
+              >
+                {link.label}
+              </a>
+            ))}
+
+            <div className="flex items-center gap-5 pt-2">
+              <a
+                href="https://www.linkedin.com/in/jaypeecabanela/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+                aria-label="LinkedIn"
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-cyan-400 transition"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/promptJaypee"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+                aria-label="GitHub"
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-cyan-400 transition"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+              </a>
+            </div>
+
+            <a
+              href="https://www.facebook.com/jaypee.cabanela"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="mt-2 px-6 py-3 text-center bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 active:scale-95 transition duration-300"
+            >
+              Contact me
+            </a>
+          </nav>
         </div>
       </header>
 
@@ -220,29 +301,6 @@ export default function Home() {
             <div className="mb-8">
             </div>
 
-            {/* <div className="mb-8">
-              <h3 className="text-2xl font-semibold mb-4 text-black dark:text-white">
-                Skills & Technologies
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  "React",
-                  "Next.js",
-                  "Tailwind CSS",
-                  "TypeScript",
-                  "JavaScript",
-                  "Web Design",
-                ].map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-4 py-2 bg-blue-100 dark:bg-blue-600 dark:bg-opacity-30 text-blue-800 dark:text-blue-200 rounded-full text-sm border border-blue-300 dark:border-blue-500 cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-600 dark:hover:bg-opacity-50 hover:text-blue-900 dark:hover:text-white hover:border-blue-400 dark:hover:border-cyan-400 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/50 dark:hover:shadow-blue-500/50 transition duration-300 transform"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div> */}
-
             {/* CTA Buttons */}
             <div className="flex gap-4 justify-center">
               <a
@@ -259,19 +317,6 @@ export default function Home() {
               </a>
             </div>
           </div>
-
-          {/* Right Image */}
-          {/* <div className="flex-1 flex justify-center items-center">
-            <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/profile website.png"
-                alt="Jaypee Cabanela Profile"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent opacity-20"></div>
-            </div>
-          </div> */}
         </section>
 
         {/* Projects Section */}
@@ -285,29 +330,7 @@ export default function Home() {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Net-Zero-Attic Website",
-                  description:
-                    "A modern portfolio platform built with Wordpress and Elementor featuring product showcase, and scheduling appointment.",
-                  tech: ["Wordpress", "Elementor", "Google SEO"],
-                  url: "https://net-zero-attic.com",
-                },
-                {
-                  title: "Elemetalix App",
-                  description:
-                    "A standalone android application featuring 118 element of Periodic Table of Element, it has interactive with blend of Augmented Reality and Quizzes which student can use for learning.",
-                  tech: ["C#", "Unity Game Engine", "Vuforia"],
-                  url: "https://github.com/johnrefani/Elementalix",
-                },
-                {
-                  title: "Portfolio Website",
-                  description:
-                    "A responsive portfolio website showcasing projects and skills with smooth animations and modern UI design.",
-                  tech: ["React", "Tailwind CSS", "Framer Motion", "Next.js"],
-                  url: "https://jaypee.online",
-                },
-              ].map((project, index) => (
+              {projects.map((project, index) => (
                 <div
                   key={index}
                   className="group relative bg-gray-50 dark:bg-linear-to-br dark:from-gray-800 dark:to-gray-900 rounded-lg overflow-hidden border border-blue-300 dark:border-blue-500 dark:border-opacity-30 hover:border-blue-400 dark:hover:border-cyan-400 transition duration-300 hover:shadow-2xl hover:shadow-blue-500/50 dark:hover:shadow-blue-500/50 p-6"
@@ -361,57 +384,6 @@ export default function Home() {
             </p>
 
             <div className="w-full px-25 gap-4 justify-center">
-              {/* Contact Information
-              <div className="space-y-6">
-                <div className="bg-gray-50 dark:bg-linear-to-br dark:from-gray-800 dark:to-gray-900 rounded-lg border border-blue-300 dark:border-blue-500 dark:border-opacity-30 p-6 hover:border-blue-400 dark:hover:border-cyan-400 transition duration-300 hover:shadow-lg hover:shadow-blue-500/50 dark:hover:shadow-blue-500/50">
-                  <div className="flex items-start gap-4">
-                    <div className="text-2xl">📧</div>
-                    <div>
-                      <h3 className="text-black dark:text-white font-semibold mb-2">
-                        Email
-                      </h3>
-                      <a
-                        href="mailto:jaypee@example.com"
-                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-cyan-400 transition"
-                      >
-                        jaypeedeaustriacabanela@gmail.com
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gray-50 dark:bg-linear-to-br dark:from-gray-800 dark:to-gray-900 rounded-lg border border-blue-300 dark:border-blue-500 dark:border-opacity-30 p-6 hover:border-blue-400 dark:hover:border-cyan-400 transition duration-300 hover:shadow-lg hover:shadow-blue-500/50 dark:hover:shadow-blue-500/50">
-                  <div className="flex items-start gap-4">
-                    <div className="text-2xl">📱</div>
-                    <div>
-                      <h3 className="text-black dark:text-white font-semibold mb-2">
-                        Phone
-                      </h3>
-                      <a
-                        href="tel:+1234567890"
-                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-cyan-400 transition"
-                      >
-                        +63 9772044079
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gray-50 dark:bg-linear-to-br dark:from-gray-800 dark:to-gray-900 rounded-lg border border-blue-300 dark:border-blue-500 dark:border-opacity-30 p-6 hover:border-blue-400 dark:hover:border-cyan-400 transition duration-300 hover:shadow-lg hover:shadow-blue-500/50 dark:hover:shadow-blue-500/50">
-                  <div className="flex items-start gap-4">
-                    <div className="text-2xl">📍</div>
-                    <div>
-                      <h3 className="text-black dark:text-white font-semibold mb-2">
-                        Location
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400">
-                        Manila, Philippines
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-
               {/* Contact Form */}
               <div className="bg-gray-50 dark:bg-linear-to-br dark:from-gray-800 dark:to-gray-900 rounded-lg border border-blue-300 dark:border-blue-500 dark:border-opacity-30 p-8 hover:border-blue-400 dark:hover:border-cyan-400 transition duration-300 hover:shadow-lg hover:shadow-blue-500/50 dark:hover:shadow-blue-500/50">
                 <form
@@ -470,19 +442,23 @@ export default function Home() {
           </p>
           <div className="flex justify-center gap-6">
             <a
-              href="#"
+              href="https://www.linkedin.com/in/jaypeecabanela/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
             >
               LinkedIn
             </a>
             <a
-              href="#"
+              href="https://github.com/promptJaypee"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
             >
               GitHub
             </a>
             <a
-              href="#"
+              href="#contacts"
               className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
             >
               Email

@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Net-Zero-Attic Website",
+    "description": "A modern portfolio platform built with Wordpress and Elementor featuring product showcase, and scheduling appointment.",
+    "tech": ["Wordpress", "Elementor", "Google SEO"],
+    "url": "https://net-zero-attic.com"
+  },
+  {
+    "title": "Elemetalix App",
+    "description": "A standalone android application featuring 118 element of Periodic Table of Element, it has interactive with blend of Augmented Reality and Quizzes which student can use for learning.",
+    "tech": ["C#", "Unity Game Engine", "Vuforia"],
+    "url": "https://github.com/johnrefani/Elementalix"
+  },
+  {
+    "title": "Portfolio Website",
+    "description": "A responsive portfolio website showcasing projects and skills with smooth animations and modern UI design.",
+    "tech": ["React", "Tailwind CSS", "Framer Motion", "Next.js"],
+    "url": "https://jaypee.online"
+  }
+]
