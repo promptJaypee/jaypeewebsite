@@ -1,4 +1,10 @@
 [
+    {
+    "title": "Fieldnotes System",
+    "description": "A internal website built for company that tracks DTR and reports of employee that can be used for tracking and reporting purposes.",
+    "tech": ["BootstrapVue", "MySQL", "Vuejs"],
+    "url": "https://fieldnotes.sbcorp.ph/"
+  },
   {
     "title": "Net-Zero-Attic Website",
     "description": "A modern portfolio platform built with Wordpress and Elementor featuring product showcase, and scheduling appointment.",

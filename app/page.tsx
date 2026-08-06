@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ChangeEvent, type FormEvent, type MouseEvent } from "react";
 import projects from "@/app/data/jsons/projects.json";
 
 export default function Home() {
@@ -11,6 +11,47 @@ export default function Home() {
   const [cursorVisible, setCursorVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [formError, setFormError] = useState("");
+
+  const handleFormChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus("sending");
+    setFormError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+
+      if (!data.success) {
+        setFormStatus("error");
+        setFormError(data.error ?? "Something went wrong. Try again.");
+        return;
+      }
+
+      setFormStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch {
+      setFormStatus("error");
+      setFormError("Network error. Try again.");
+    }
+  };
 
   //dark theme start
   useEffect(() => {
@@ -95,11 +136,23 @@ export default function Home() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
+  const handleSmoothScroll = (
+    event: MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    event.preventDefault();
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    closeMenu();
+  };
+
   const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#contacts", label: "Contacts" },
+    { href: "#home", label: "Home", targetId: "home" },
+    { href: "#contacts", label: "Contacts", targetId: "contacts" },
     { href: "https://www.linkedin.com/in/jaypeecabanela/", label: "Mail" },
-    { href: "#projects", label: "Projects" },
+    { href: "#projects", label: "Projects", targetId: "projects" },
   ];
 
   return (
@@ -138,6 +191,11 @@ export default function Home() {
                   <a
                     key={link.label}
                     href={link.href}
+                    onClick={(event) => {
+                      if (link.targetId) {
+                        handleSmoothScroll(event, link.targetId);
+                      }
+                    }}
                     className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
                   >
                     {link.label}
@@ -228,7 +286,13 @@ export default function Home() {
               <a
                 key={link.label}
                 href={link.href}
-                onClick={closeMenu}
+                onClick={(event) => {
+                  if (link.targetId) {
+                    handleSmoothScroll(event, link.targetId);
+                  } else {
+                    closeMenu();
+                  }
+                }}
                 className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition text-lg font-medium"
               >
                 {link.label}
@@ -279,20 +343,20 @@ export default function Home() {
         {/* Hero Section */}
         <section
           id="home"
-          className="flex flex-col items-center justify-center gap-12 px-6 lg:px-20 py-20 min-h-screen"
+          className="flex flex-col items-center justify-center gap-12 px-6 lg:px-20 py-20 min-h-screen scroll-mt-24"
         >
           {/* Center Content */}
           <div className="flex flex-col justify-center text-center text-black dark:text-white max-w-2xl">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-4 bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent break-words">
               {typedText}
               {cursorVisible ? <span className="text-white">|</span> : ""}
             </h1>
 
-            <p className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-2">
+            <p className="text-lg sm:text-xl font-bold text-gray-700 dark:text-gray-300 mb-2">
               Front-end Web Developer | UI/UX Designer
             </p>
 
-            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
               Passionate front-end web developer skilled in React, Next.js, and
               Tailwind CSS, focused on creating responsive, user-friendly
               websites with clean code and exceptional design.
@@ -302,16 +366,18 @@ export default function Home() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
               <a
                 href="#contacts"
-                className="px-8 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 hover:scale-105 active:scale-95 transition duration-300 transform"
+                onClick={(event) => handleSmoothScroll(event, "contacts")}
+                className="w-full sm:w-auto px-8 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 hover:scale-105 active:scale-95 transition duration-300 transform text-center"
               >
-                Get In Touch
+               Hire Me
               </a>
               <a
                 href="#projects"
-                className="px-8 py-3 border-2 border-blue-500 text-gray-700 dark:text-gray-400 font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 hover:bg-blue-100 dark:hover:bg-blue-500 dark:hover:bg-opacity-20 hover:scale-105 active:scale-95 hover:border-blue-400 dark:hover:border-cyan-400 transition duration-300 transform inline-block"
+                onClick={(event) => handleSmoothScroll(event, "projects")}
+                className="w-full sm:w-auto px-8 py-3 border-2 border-blue-500 text-gray-700 dark:text-gray-400 font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 hover:bg-blue-100 dark:hover:bg-blue-500 dark:hover:bg-opacity-20 hover:scale-105 active:scale-95 hover:border-blue-400 dark:hover:border-cyan-400 transition duration-300 transform inline-block text-center"
               >
                 View Projects
               </a>
@@ -322,10 +388,10 @@ export default function Home() {
         {/* Projects Section */}
         <section
           id="projects"
-          className="w-full py-20 px-6 lg:px-20 bg-gray-50 dark:bg-linear-to-br dark:from-gray-900 dark:via-black dark:to-gray-900"
+          className="w-full py-20 px-6 lg:px-20 bg-gray-50 dark:bg-linear-to-br dark:from-gray-900 dark:via-black dark:to-gray-900 scroll-mt-24"
         >
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl lg:text-6xl font-bold mb-12 text-center bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-12 text-center bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               Featured Projects
             </h2>
 
@@ -371,32 +437,33 @@ export default function Home() {
         {/* Contact Section */}
         <section
           id="contacts"
-          className="w-full py-20 px-6 lg:px-20 bg-gray-50 dark:bg-linear-to-br dark:from-black dark:via-gray-900 dark:to-black"
+          className="w-full py-20 px-4 sm:px-6 lg:px-20 bg-gray-50 dark:bg-linear-to-br dark:from-black dark:via-gray-900 dark:to-black scroll-mt-24"
         >
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl lg:text-6xl font-bold mb-8 text-center bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-center bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               Get In Touch
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 text-center text-lg mb-12">
+            <p className="text-gray-700 dark:text-gray-300 text-center text-base sm:text-lg mb-12">
               Have a project in mind or want to collaborate? I&apos;d love to
               hear from you. Reach out and let&apos;s create something amazing
               together!
             </p>
 
-            <div className="w-full px-25 gap-4 justify-center">
+            <div className="w-full">
               {/* Contact Form */}
-              <div className="bg-gray-50 dark:bg-linear-to-br dark:from-gray-800 dark:to-gray-900 rounded-lg border border-blue-300 dark:border-blue-500 dark:border-opacity-30 p-8 hover:border-blue-400 dark:hover:border-cyan-400 transition duration-300 hover:shadow-lg hover:shadow-blue-500/50 dark:hover:shadow-blue-500/50">
-                <form
-                  className="space-y-4"
-                  onSubmit={(e) => e.preventDefault()}
-                >
+              <div className="bg-gray-50 dark:bg-linear-to-br dark:from-gray-800 dark:to-gray-900 rounded-lg border border-blue-300 dark:border-blue-500 dark:border-opacity-30 p-5 sm:p-8 hover:border-blue-400 dark:hover:border-cyan-400 transition duration-300 hover:shadow-lg hover:shadow-blue-500/50 dark:hover:shadow-blue-500/50">
+                <form className="space-y-4" onSubmit={handleFormSubmit}>
                   <div>
                     <label className="block text-black dark:text-white font-semibold mb-2">
                       Name
                     </label>
                     <input
                       type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleFormChange}
                       placeholder="Your Name"
+                      required
                       className="w-full bg-white dark:bg-gray-900 border border-blue-300 dark:border-blue-500 dark:border-opacity-30 rounded-lg px-4 py-2 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:shadow-lg focus:shadow-cyan-400/50 transition"
                     />
                   </div>
@@ -407,7 +474,11 @@ export default function Home() {
                     </label>
                     <input
                       type="email"
+                      name="email"  
+                      value={formData.email}
+                      onChange={handleFormChange}
                       placeholder="your@email.com"
+                      required
                       className="w-full bg-white dark:bg-gray-900 border border-blue-300 dark:border-blue-500 dark:border-opacity-30 rounded-lg px-4 py-2 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:shadow-lg focus:shadow-cyan-400/50 transition"
                     />
                   </div>
@@ -417,17 +488,36 @@ export default function Home() {
                       Message
                     </label>
                     <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleFormChange}
                       placeholder="Your message here..."
                       rows={4}
+                      required
                       className="w-full bg-white dark:bg-gray-900 border border-blue-300 dark:border-blue-500 dark:border-opacity-30 rounded-lg px-4 py-2 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:shadow-lg focus:shadow-cyan-400/50 transition resize-none"
                     ></textarea>
                   </div>
 
+                  {formStatus !== "idle" && (
+                    <p
+                      className={`text-sm ${
+                        formStatus === "success"
+                          ? "text-green-600 dark:text-green-400"
+                          : "text-red-600 dark:text-red-400"
+                      }`}
+                    >
+                      {formStatus === "success"
+                        ? "Thanks! Your message has been sent."
+                        : formError}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 hover:scale-105 active:scale-95 transition duration-300 transform"
+                    disabled={formStatus === "sending"}
+                    className="w-full px-6 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/75 hover:scale-105 active:scale-95 transition duration-300 transform disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {formStatus === "sending" ? "Sending..." : "Send Message"}
                   </button>
                 </form>
               </div>
@@ -440,7 +530,7 @@ export default function Home() {
           <p className="text-gray-700 dark:text-gray-300 text-lg mb-4">
             Lets connect and bring your web projects to life!
           </p>
-          <div className="flex justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             <a
               href="https://www.linkedin.com/in/jaypeecabanela/"
               target="_blank"
@@ -459,6 +549,7 @@ export default function Home() {
             </a>
             <a
               href="#contacts"
+              onClick={(event) => handleSmoothScroll(event, "contacts")}
               className="text-blue-600 dark:text-blue-400 hover:underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition  relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-0.75 after:w-0 after:-translate-x-1/2 after:bg-blue-600 dark:after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
             >
               Email
