@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Studio Commerce",
+    "description": "A polished e-commerce experience built with a modern product flow, seamless checkout, and conversion-first visuals.",
+    "category": "E-commerce",
+    "tools": ["Next.js", "Tailwind CSS", "Stripe"],
+    "year": "2024",
+    "status": "Live",
+    "gradient": "linear-gradient(135deg, #2563eb 0%, #06b6d4 100%)",
+    "url": "#"
+  },
+  {
+    "title": "Northstar Dashboard",
+    "description": "A data-rich SaaS dashboard with smart analytics, a clean admin layout, and responsive charting.",
+    "category": "SaaS App",
+    "tools": ["React", "TypeScript", "Chart.js"],
+    "year": "2023",
+    "status": "Beta",
+    "gradient": "linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%)",
+    "url": "#"
+  },
+  {
+    "title": "Lumen Landing",
+    "description": "A storytelling-focused landing page designed to turn interest into signups through motion and clarity.",
+    "category": "Marketing Site",
+    "tools": ["Next.js", "Framer Motion", "Figma"],
+    "year": "2025",
+    "status": "Launching",
+    "gradient": "linear-gradient(135deg, #dc2626 0%, #f59e0b 100%)",
+    "url": "#"
+  }
+]

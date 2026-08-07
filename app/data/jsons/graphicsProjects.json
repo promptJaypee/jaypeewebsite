@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Brand Identity Refresh",
+    "description": "A modern visual system for a lifestyle brand with refined typography, bold color, and confident storytelling.",
+    "category": "Brand Design",
+    "tools": ["Figma", "Photoshop", "Illustrator"],
+    "year": "2024",
+    "status": "Featured",
+    "gradient": "linear-gradient(135deg, #7c3aed 0%, #f43f5e 100%)",
+    "url": "#"
+  },
+  {
+    "title": "Social Campaign Kit",
+    "description": "A cohesive set of digital assets for a product launch, designed to stand out across multiple platforms.",
+    "category": "Social Media",
+    "tools": ["Canva", "Photoshop", "Figma"],
+    "year": "2023",
+    "status": "Published",
+    "gradient": "linear-gradient(135deg, #0f766e 0%, #22c55e 100%)",
+    "url": "#"
+  },
+  {
+    "title": "Editorial Poster Set",
+    "description": "A series of poster layouts blending editorial aesthetics with premium visual hierarchy and motion-ready composition.",
+    "category": "Editorial",
+    "tools": ["Illustrator", "Photoshop", "InDesign"],
+    "year": "2025",
+    "status": "New",
+    "gradient": "linear-gradient(135deg, #ea580c 0%, #facc15 100%)",
+    "url": "#"
+  }
+]

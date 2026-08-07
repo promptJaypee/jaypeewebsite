@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Brand Reel Launch",
+    "description": "A cinematic product launch reel designed for social media with a bold intro, fast pacing, and polished transitions.",
+    "category": "Brand Content",
+    "tools": ["Premiere Pro", "After Effects", "CapCut"],
+    "year": "2024",
+    "duration": "00:45",
+    "gradient": "linear-gradient(135deg, #7c3aed 0%, #ec4899 100%)",
+    "url": "#"
+  },
+  {
+    "title": "Travel Story Cut",
+    "description": "An emotion-driven travel montage with layered sound design, color grading, and scenic pacing.",
+    "category": "Travel Film",
+    "tools": ["Premiere Pro", "Audition", "Photoshop"],
+    "year": "2023",
+    "duration": "01:12",
+    "gradient": "linear-gradient(135deg, #0f766e 0%, #38bdf8 100%)",
+    "url": "#"
+  },    
+  {
+    "title": "Music Visualizer",
+    "description": "A rhythmic music video edit built around beat drops, synced transitions, and immersive motion graphics.",
+    "category": "Music Video",
+    "tools": ["Premiere Pro", "After Effects", "DaVinci Resolve"],
+    "year": "2025",
+    "duration": "00:57",
+    "gradient": "linear-gradient(135deg, #ea580c 0%, #f59e0b 100%)",
+    "url": "#"
+  }
+]

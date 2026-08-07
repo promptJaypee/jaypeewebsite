@@ -8,11 +8,11 @@ export default function Home() {
   const heroText = "Jaypee Cabanela.";
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [typedText, setTypedText] = useState("");
+  const [typedText, setTypedText] = useState(""); 
   const [cursorVisible, setCursorVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-    
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -428,7 +428,7 @@ export default function Home() {
                     </div>
                     <a
                       href={project.url}
-                      target="_blank"
+                      target="_self"
                       rel="noopener noreferrer"
                       className="mt-6 px-4 py-2 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/75 hover:scale-105 active:scale-95 transition duration-300 transform inline-block"
                     >
@@ -438,7 +438,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </div>  
         </section>
 
         {/* Contact Section */}
