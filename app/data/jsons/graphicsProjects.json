@@ -4,10 +4,10 @@
     "description": "A modern visual system for a lifestyle brand with refined typography, bold color, and confident storytelling.",
     "category": "Brand Design",
     "tools": ["Figma", "Photoshop", "Illustrator"],
-    "year": "2024",
+    "year": "2022",
     "status": "Featured",
-    "gradient": "linear-gradient(135deg, #7c3aed 0%, #f43f5e 100%)",
-    "url": "#"
+    "url": "#",
+    "image": "/images/graphics/poster.png"
   },
   {
     "title": "Social Campaign Kit",
@@ -16,8 +16,8 @@
     "tools": ["Canva", "Photoshop", "Figma"],
     "year": "2023",
     "status": "Published",
-    "gradient": "linear-gradient(135deg, #0f766e 0%, #22c55e 100%)",
-    "url": "#"
+    "url": "#",
+    "image": "/images/graphics/brochure.png"
   },
   {
     "title": "Editorial Poster Set",
@@ -26,7 +26,7 @@
     "tools": ["Illustrator", "Photoshop", "InDesign"],
     "year": "2025",
     "status": "New",
-    "gradient": "linear-gradient(135deg, #ea580c 0%, #facc15 100%)",
-    "url": "#"
+    "url": "#",
+    "image": "/images/graphics/rabbitposter.png"
   }
 ]

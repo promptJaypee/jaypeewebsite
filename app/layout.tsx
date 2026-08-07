@@ -14,11 +14,15 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
+
 export const metadata: Metadata = {
   title: "Jaypee Draws",
   description:
     "Jaypee Draws is a personal website showcasing the artwork and illustrations of Jaypee, a talented artist. Explore a collection of unique and captivating drawings, from digital art to traditional sketches. Discover the creative world of Jaypee Draws and get inspired by the artistic journey.",
-};
+ icons: {
+    icon: "/jaypeedraws-icon.png",
+  },
+  };
 
 export default function RootLayout({
   children,

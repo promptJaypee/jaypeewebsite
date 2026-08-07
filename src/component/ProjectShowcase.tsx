@@ -8,7 +8,8 @@ type ShowcaseProject = {
   category: string;
   tools: string[];
   year: string;
-  gradient: string;
+  gradient?: string;
+  image?: string;
   url: string;
   status?: string;
   duration?: string;
@@ -68,7 +69,7 @@ export default function ProjectShowcase({
   const metaValue = featuredProject.status ?? featuredProject.duration ?? featuredProject.year;
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(249,115,22,0.16),_transparent_35%),linear-gradient(135deg,_#f8fafc_0%,_#fef3c7_100%)] px-6 py-24 text-slate-900 dark:bg-[radial-gradient(circle_at_top_left,_rgba(249,115,22,0.18),_transparent_35%),linear-gradient(135deg,_#020617_0%,_#111827_100%)] dark:text-white sm:px-8 lg:px-12">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(35,22,249,0.16),_transparent_35%),linear-gradient(135deg,_#f8fafc_0%,_#fef3c7_100%)] px-6 py-24 text-slate-900 dark:bg-[radial-gradient(circle_at_top_left,_rgba(35,22,249,0.18),_transparent_35%),linear-gradient(135deg,_#020617_0%,_#111827_100%)] dark:text-white sm:px-8 lg:px-12">
       <section className="mx-auto flex max-w-7xl flex-col gap-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl space-y-4">
@@ -81,7 +82,7 @@ export default function ProjectShowcase({
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/70 bg-white/80 p-4 shadow-xl shadow-orange-500/10 backdrop-blur dark:border-slate-800 dark:bg-slate-900/80">
+          <div className="rounded-2xl border border-white/70 bg-white/80 p-4 shadow-xl shadow-blue-500/10 backdrop-blur dark:border-slate-800 dark:bg-slate-900/80">
             <p className="text-sm font-medium uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
               Spotlight
             </p>
@@ -96,7 +97,17 @@ export default function ProjectShowcase({
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            <div className="h-72 sm:h-80 transition duration-500 group-hover:scale-105" style={{ background: featuredProject.gradient }} />
+            <div className="relative h-72 sm:h-80 overflow-hidden transition duration-500 group-hover:scale-105">
+              {featuredProject.image ? (
+                <img
+                  src={featuredProject.image}
+                  alt={featuredProject.title}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <div className="h-full w-full" style={{ background: featuredProject.gradient }} />
+              )}
+            </div>
             <div className="space-y-4 p-6 sm:p-8">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-slate-200">
@@ -122,8 +133,8 @@ export default function ProjectShowcase({
 
               <div className="flex items-center justify-between pt-2">
                 <span className="text-sm text-slate-400">{metaLabel}: {metaValue}</span>
-                <a
-                  href={featuredProject.url}
+                
+                  <a href={featuredProject.url}
                   className={`rounded-full px-4 py-2 text-sm font-semibold text-white transition ${tone.button} ${tone.buttonHover}`}
                 >
                   {buttonLabel}

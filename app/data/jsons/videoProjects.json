@@ -6,8 +6,8 @@
     "tools": ["Premiere Pro", "After Effects", "CapCut"],
     "year": "2024",
     "duration": "00:45",
-    "gradient": "linear-gradient(135deg, #7c3aed 0%, #ec4899 100%)",
-    "url": "#"
+    "url": "#",
+    "image": "/images/video/brochure1.png"
   },
   {
     "title": "Travel Story Cut",
@@ -16,9 +16,9 @@
     "tools": ["Premiere Pro", "Audition", "Photoshop"],
     "year": "2023",
     "duration": "01:12",
-    "gradient": "linear-gradient(135deg, #0f766e 0%, #38bdf8 100%)",
-    "url": "#"
-  },    
+    "url": "#",
+    "image": "/images/video/poster.png"
+  },
   {
     "title": "Music Visualizer",
     "description": "A rhythmic music video edit built around beat drops, synced transitions, and immersive motion graphics.",
@@ -26,7 +26,7 @@
     "tools": ["Premiere Pro", "After Effects", "DaVinci Resolve"],
     "year": "2025",
     "duration": "00:57",
-    "gradient": "linear-gradient(135deg, #ea580c 0%, #f59e0b 100%)",
-    "url": "#"
+    "url": "#",
+    "image": "/images/video/brochure.png"
   }
 ]

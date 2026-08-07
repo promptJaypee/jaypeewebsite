@@ -6,8 +6,8 @@
     "tools": ["Next.js", "Tailwind CSS", "Stripe"],
     "year": "2024",
     "status": "Live",
-    "gradient": "linear-gradient(135deg, #2563eb 0%, #06b6d4 100%)",
-    "url": "#"
+    "url": "#",
+    "image": "/images/website/dj.png"
   },
   {
     "title": "Northstar Dashboard",
@@ -16,8 +16,8 @@
     "tools": ["React", "TypeScript", "Chart.js"],
     "year": "2023",
     "status": "Beta",
-    "gradient": "linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%)",
-    "url": "#"
+    "url": "#",
+    "image": "/images/website/hp1.png"
   },
   {
     "title": "Lumen Landing",
@@ -26,7 +26,7 @@
     "tools": ["Next.js", "Framer Motion", "Figma"],
     "year": "2025",
     "status": "Launching",
-    "gradient": "linear-gradient(135deg, #dc2626 0%, #f59e0b 100%)",
-    "url": "#"
+    "url": "#",
+    "image": "/images/website/tings1.png"
   }
 ]

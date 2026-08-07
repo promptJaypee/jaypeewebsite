@@ -4,7 +4,7 @@ import projects from "../../data/jsons/websiteProjects.json";
 export default function WebsiteProjectsPage() {
   return (
     <ProjectShowcase
-      eyebrow="Web & App Portfolio"
+      eyebrow="Web & App"
       heading="Modern builds for brands, products, and launches."
       description="A clean starter showcase for website and app projects."
       projects={projects}

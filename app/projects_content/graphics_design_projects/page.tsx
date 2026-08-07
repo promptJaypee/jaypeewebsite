@@ -4,18 +4,18 @@ import projects from "../../data/jsons/graphicsProjects.json";
 export default function GraphicsDesignProjectsPage() {
   return (
     <ProjectShowcase
-      eyebrow="Graphics Design Portfolio"
+      eyebrow="Graphics Design"
       heading="Visual systems that make brands feel unforgettable."
       description="A refined starter gallery for graphic design work."
       projects={projects}
       tone={{
-        eyebrow: "border-orange-200 bg-white/70 text-orange-700 dark:border-orange-500/30 dark:bg-slate-900/60 dark:text-orange-300",
-        button: "bg-orange-500 hover:bg-orange-600",
-        buttonHover: "hover:shadow-lg hover:shadow-orange-500/30",
-        activeCard: "border-orange-400 bg-orange-50 shadow-lg shadow-orange-500/10 dark:border-orange-400 dark:bg-orange-500/10",
-        listButton: "hover:border-orange-400 hover:text-orange-600",
-        chip: "bg-orange-500/20 text-orange-200",
-        accent: "orange",
+        eyebrow: "border-blue-200 bg-white/70 text-blue-700 dark:border-blue-500/30 dark:bg-slate-900/60 dark:text-blue-300",
+        button: "bg-blue-500 hover:bg-blue-600",
+        buttonHover: "hover:shadow-lg hover:shadow-blue-500/30",
+        activeCard: "border-blue-400 bg-blue-50 shadow-lg shadow-blue-500/10 dark:border-blue-400 dark:bg-blue-500/10",
+        listButton: "hover:border-blue-400 hover:text-blue-600",
+        chip: "bg-blue-500/20 text-blue-200",
+        accent: "blue",
       }}
       buttonLabel="View project"
       listHeading="Recent work"
