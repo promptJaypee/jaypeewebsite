@@ -1,32 +1,40 @@
 [
-  {
-    "name": "Maria Santos",
-    "role": "Product Manager",
-    "company": "Brightline Co.",
+     {
+    "name": "Net-zero Attic",
+    "role": "Owner/CEO",
+    "company": "Net-zero Attic",
     "quote": "Jaypee turned our vague ideas into a polished, responsive site faster than we expected. Communication was clear the whole way through.",
     "avatar": "/testimonials/maria.jpg",
     "rating": 5
   },
   {
-    "name": "Daniel Reyes",
+    "name": "Ting's Laing",
+    "role": "Owner/CEO",
+    "company": "Tings Laing",
+    "quote": "Jaypee turned our vague ideas into a polished, responsive site faster than we expected. Communication was clear the whole way through.",
+    "avatar": "/testimonials/maria.jpg",
+    "rating": 5
+  },
+  {
+    "name": "SB Corporation",
     "role": "Founder",
-    "company": "Reyes Studio",
+    "company": "SB Corporation",
     "quote": "Clean code, great eye for design, and genuinely easy to work with. Our conversion rate improved right after launch.",
     "avatar": "/testimonials/daniel.jpg",
     "rating": 5
   },
   {
-    "name": "Ana Cruz",
-    "role": "Marketing Lead",
-    "company": "Nova Agency",
+    "name": "Jochelle Enriquez",
+    "role": "Owner",
+    "company": "Jochelle Law Firm",
     "quote": "He caught UX issues we hadn't even noticed and fixed them proactively. Exactly the kind of developer you want on a tight deadline.",
     "avatar": "/testimonials/ana.jpg",
     "rating": 5
   },
   {
-    "name": "Kevin Lim",
-    "role": "CTO",
-    "company": "Lim Technologies",
+    "name": "Robert Lim",
+    "role": "CEO/Owner",
+    "company": "Roblim Pest Control",
     "quote": "Solid grasp of React and Next.js. The site he built for us is fast, accessible, and easy to maintain.",
     "avatar": "/testimonials/kevin.jpg",
     "rating": 4
