@@ -1,32 +1,32 @@
 [
   {
-    "title": "Brand Identity Refresh",
-    "description": "A modern visual system for a lifestyle brand with refined typography, bold color, and confident storytelling.",
+    "title": "Social Media Event Poster Design",
+    "description": "A bold and engaging social media event poster designed to capture attention, communicate key details, and create a strong visual identity.",
     "category": "Brand Design",
     "tools": ["Figma", "Photoshop", "Illustrator"],
     "year": "2022",
     "status": "Featured",
     "url": "#",
-    "image": "/images/graphics/poster.png"
+    "image": "/images/images/brochure/poster.png"
   },
   {
-    "title": "Social Campaign Kit",
-    "description": "A cohesive set of digital assets for a product launch, designed to stand out across multiple platforms.",
-    "category": "Social Media",
-    "tools": ["Canva", "Photoshop", "Figma"],
+    "title": "Logo Rebranding Design",
+    "description": "A refreshed logo identity designed to modernize the brand, strengthen its visual presence, and create a more cohesive brand image.",
+    "category": "Logo Design",
+    "tools": ["Illustrator", "Photoshop"],
     "year": "2023",
     "status": "Published",
     "url": "#",
-    "image": "/images/graphics/brochure.png"
+    "image": "/images/images/logo/roblim.png"
   },
   {
-    "title": "Editorial Poster Set",
-    "description": "A series of poster layouts blending editorial aesthetics with premium visual hierarchy and motion-ready composition.",
+    "title": "Illustration and Graphic Arts",
+    "description": "A series of expressive illustrations and graphic artworks blending bold visuals, creative concepts, and distinctive artistic styles.",
     "category": "Editorial",
     "tools": ["Illustrator", "Photoshop", "InDesign"],
     "year": "2025",
     "status": "New",
     "url": "#",
-    "image": "/images/graphics/rabbitposter.png"
+    "image": "/images/images/others/itachi.png"
   }
 ]

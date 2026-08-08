@@ -1,32 +1,42 @@
 [
   {
-    "title": "Studio Commerce",
-    "description": "A polished e-commerce experience built with a modern product flow, seamless checkout, and conversion-first visuals.",
-    "category": "E-commerce",
-    "tools": ["Next.js", "Tailwind CSS", "Stripe"],
-    "year": "2024",
-    "status": "Live",
-    "url": "#",
-    "image": "/images/website/dj.png"
-  },
-  {
-    "title": "Northstar Dashboard",
-    "description": "A data-rich SaaS dashboard with smart analytics, a clean admin layout, and responsive charting.",
-    "category": "SaaS App",
-    "tools": ["React", "TypeScript", "Chart.js"],
+    "title": "Net-zero-attic",
+    "description": "A responsive website built using Wordpress to present Net-Zero Attic's services through clean layouts, intuitive navigation, and a modern visual experience.",
+    "category": "E-commerce Website",
+    "tools": ["Wordpress", "Elementor"],
     "year": "2023",
-    "status": "Beta",
-    "url": "#",
-    "image": "/images/website/hp1.png"
+    "status": "Live",
+    "url": "https://net-zero-attic.com/",
+    "image": "/images/website/netzeroattic.jpg"
   },
   {
-    "title": "Lumen Landing",
-    "description": "A storytelling-focused landing page designed to turn interest into signups through motion and clarity.",
-    "category": "Marketing Site",
-    "tools": ["Next.js", "Framer Motion", "Figma"],
+    "title": "Elementalix App",
+    "description": "An augmented reality learning app designed to make chemistry more interactive through 3D visualizations, quizzes, and engaging educational experiences.",
+    "category": "Unity Development App",
+    "tools": ["C#", "Unity", "Figma"],
+    "year": "2023",
+    "status": "Live",
+    "url": "https://github.com/johnrefani/Elementalix",
+    "image": "/images/website/elementalix.jpg"
+  },
+  {
+    "title": "Fieldnotes Website",
+    "description": "A thoughtfully designed internal website combining clean layouts, engaging visuals, and intuitive navigation to create a polished digital experience.",
+    "category": "Internal HR Web App",
+    "tools": ["Bootstrap", "Vue.js", "Figma"],
     "year": "2025",
-    "status": "Launching",
-    "url": "#",
-    "image": "/images/website/tings1.png"
+    "status": "Launched",
+    "url": "https://fieldnotes.sbcorp.ph/",
+    "image": "/images/website/sbcorp.png"
+  },
+    {
+    "title": "Jaypee Draws portfolio",
+    "description": "A personal creative portfolio blending illustration, graphic design, and web development into a bold and interactive digital experience.",
+    "category": "Portfolio Website",
+    "tools": ["Next.js", "React", "Nodejs", "Figma"],
+    "year": "2025",
+    "status": "Launched",
+    "url": "https://www.jaypee.online/",
+    "image": "/images/website/jaypeedraws.png"
   }
 ]
