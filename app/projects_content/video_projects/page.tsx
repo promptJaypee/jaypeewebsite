@@ -17,7 +17,7 @@ export default function VideoProjectsPage() {
         chip: "bg-blue-500/20 text-blue-200",
         accent: "blue",
       }}
-      buttonLabel="View demo"
+      buttonLabel="View Video"
       listHeading="Recent edits"
       metaLabel="Duration"
     />

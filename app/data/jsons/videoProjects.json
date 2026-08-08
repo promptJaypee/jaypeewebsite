@@ -1,32 +1,22 @@
 [
   {
-    "title": "Brand Reel Launch",
-    "description": "A cinematic product launch reel designed for social media with a bold intro, fast pacing, and polished transitions.",
+    "title": "Chromatic Contagion - Lead VFX Editor",
+    "description": "A cinematic visual project showcasing creative VFX, dynamic compositing, and polished effects, with VFX direction and editing led throughout the production.",
     "category": "Brand Content",
-    "tools": ["Premiere Pro", "After Effects", "CapCut"],
+    "tools": ["Premiere Pro", "After Effects", "Blender 3D"],
     "year": "2024",
     "duration": "00:45",
     "url": "#",
-    "image": "/images/video/brochure1.png"
+    "image": "/images/website/chromatic.jpg"
   },
   {
-    "title": "Travel Story Cut",
-    "description": "An emotion-driven travel montage with layered sound design, color grading, and scenic pacing.",
+    "title": "TikTok Short Form Videos",
+    "description": "A collection of TikTok short-form edits featuring dynamic pacing, creative transitions, visual effects, and engaging storytelling.",
     "category": "Travel Film",
-    "tools": ["Premiere Pro", "Audition", "Photoshop"],
+    "tools": ["Premiere Pro", "Capcut", "Photoshop"],
     "year": "2023",
     "duration": "01:12",
-    "url": "#",
-    "image": "/images/video/poster.png"
-  },
-  {
-    "title": "Music Visualizer",
-    "description": "A rhythmic music video edit built around beat drops, synced transitions, and immersive motion graphics.",
-    "category": "Music Video",
-    "tools": ["Premiere Pro", "After Effects", "DaVinci Resolve"],
-    "year": "2025",
-    "duration": "00:57",
-    "url": "#",
-    "image": "/images/video/brochure.png"
+    "url": "https://www.tiktok.com/@jaypee.cabanela",
+    "image": "/images/website/tiktok.png"
   }
 ]

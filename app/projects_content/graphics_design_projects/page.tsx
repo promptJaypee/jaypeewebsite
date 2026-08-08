@@ -17,7 +17,7 @@ export default function GraphicsDesignProjectsPage() {
         chip: "bg-blue-500/20 text-blue-200",
         accent: "blue",
       }}
-      buttonLabel="View project"
+      buttonLabel="View Design"
       listHeading="Recent work"
       metaLabel="Status"
     />

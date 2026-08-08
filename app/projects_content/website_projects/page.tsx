@@ -17,7 +17,7 @@ export default function WebsiteProjectsPage() {
         chip: "bg-blue-500/20 text-blue-200",
         accent: "blue",
       }}
-      buttonLabel="View project"
+      buttonLabel="View Website"
       listHeading="Recent builds"
       metaLabel="Status"
     />
